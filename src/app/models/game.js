@@ -40,6 +40,13 @@ export default {
     resumeAndPause: (state) => ({
       ...state,
       playing: !state.playing
+    }),
+    resetGameState: (state) => ({
+      ...state,
+      score: 0,
+      totalProofs: 10,
+      success: 0,
+      fails: 0
     })
   }
 };

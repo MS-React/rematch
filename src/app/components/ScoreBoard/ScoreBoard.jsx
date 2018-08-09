@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScoreBoard = ({ success, fails, score }) => {
+const ScoreBoard = ({ success, fails, score, resetGame }) => {
   return (
     <div className="score-board">
       <h2>Score Board</h2>
@@ -9,7 +9,7 @@ const ScoreBoard = ({ success, fails, score }) => {
         Successful : {success} <br />
         Fails : {fails} <br />
         Total Score : {score} <br />
-        <button>Try Again!</button>
+        <button onClick={resetGame}>Try Again!</button>
       </div>
     </div>
   );

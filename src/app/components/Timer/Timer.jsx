@@ -51,7 +51,6 @@ class Timer extends React.Component {
   }
 
   render() {
-    console.log('Timer::render');
     return (
       <div className="timer">
         {this.state.elapsed}

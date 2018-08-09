@@ -19,7 +19,7 @@ class Game extends React.PureComponent {
     this.generateProof();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (this.state.resetTimer === true) {
       this.setState({
         resetTimer: false
@@ -83,6 +83,14 @@ class Game extends React.PureComponent {
     });
   }
 
+  resetGame = () => {
+    this.setState({
+      endGame: false
+    }, () => {
+      this.props.resetGameState();
+    });
+  }
+
   render() {
     const { game, player } = this.props;
 
@@ -92,6 +100,7 @@ class Game extends React.PureComponent {
           score={game.score}
           success={game.success}
           fails={game.fails}
+          resetGame={this.resetGame}
         />
       );
     }
@@ -127,7 +136,8 @@ const mapDispatchToProps = dispatch => ({
   success: () => dispatch.game.incrementSuccess(),
   failure: () => dispatch.game.incrementFails(),
   proofsLeft: () => dispatch.game.proofsLeft(),
-  incrementScore: () => dispatch.game.incrementScore()
+  incrementScore: () => dispatch.game.incrementScore(),
+  resetGameState: () => dispatch.game.resetGameState()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
