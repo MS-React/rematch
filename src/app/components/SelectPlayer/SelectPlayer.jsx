@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './SelectPlayer.scss';
+
 class SelectPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -26,7 +28,8 @@ class SelectPlayer extends React.PureComponent {
 
     return (
       <div className="selectPlayer">
-        <div>Choose a Player Name to start the game!</div>
+        <div>Are you good with Maths? Lets see!</div>
+        <div>Choose a Name to start!</div>
         <input type="text" onChange={this.setPlayerHandler} />
         <button onClick={this.play}>Play!</button>
       </div>

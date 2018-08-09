@@ -51,9 +51,10 @@ class Game extends React.PureComponent {
   }
 
   confirmProof = () => {
-    const { success, failure } = this.props;
+    const { success, failure, incrementScore } = this.props;
     if (this.state.proof.result === this.state.userInputResult) {
       success();
+      incrementScore(10);
     } else {
       failure();
     }
@@ -62,9 +63,8 @@ class Game extends React.PureComponent {
   }
 
   nextProof = (confirmProof = false) => {
-    const { game, proofsLeft, incrementScore } = this.props;
+    const { game, proofsLeft } = this.props;
     proofsLeft();
-    incrementScore(10);
 
     if (game.totalProofs === 0) {
       this.endGame();
@@ -74,6 +74,7 @@ class Game extends React.PureComponent {
   }
 
   timeEnded = () => {
+    this.props.failure();
     this.nextProof();
   };
 
