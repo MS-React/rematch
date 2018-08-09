@@ -7,10 +7,10 @@ export default {
     totalProofs: 10,
     timePerProof: 30,
     playing: false,
-    started: false,
     player: {
       name: null
-    }
+    },
+    proofs: []
   },
   reducers: {
     incrementScore: (state, payload) => ({
@@ -29,19 +29,17 @@ export default {
       ...state,
       totalProofs: --state.totalProofs
     }),
-    setPlayer: (state, payload) => ({
-      ...state,
-      player: {
-        name: String(payload)
+    setPlayer: (state, payload) => {
+      return {
+        ...state,
+        player: {
+          name: String(payload)
+        }
       }
-    }),
+    },
     resumeAndPause: (state) => ({
       ...state,
       playing: !state.playing
-    }),
-    startGame: (state) => ({
-      ...state,
-      started: true
     })
   }
 };

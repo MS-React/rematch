@@ -66,13 +66,4 @@ describe("Game model", () => {
       expect(gameState.playing).toBe(!currentPlayingStatus);
     });
   });
-
-  describe("startGame", () => {
-    it("should update the started status in the state", () => {
-      store.dispatch.game.startGame();
-
-      const gameState = store.getState().game;
-      expect(gameState.started).toBeTruthy();
-    });
-  });
 });
