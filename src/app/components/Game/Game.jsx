@@ -118,6 +118,11 @@ class Game extends React.PureComponent {
               resetTimer={this.state.resetTimer}
             />
           </div>
+          <div className="actual-score">
+            Total Score: {game.score} <br />
+            Success: {game.success} <br />
+            Failures: {game.fails} <br />
+          </div>
         </div>
         {this.state.proof.equation} = ?
         <input type="text" onChange={this.setResult} />
@@ -136,7 +141,7 @@ const mapDispatchToProps = dispatch => ({
   success: () => dispatch.game.incrementSuccess(),
   failure: () => dispatch.game.incrementFails(),
   proofsLeft: () => dispatch.game.proofsLeft(),
-  incrementScore: () => dispatch.game.incrementScore(),
+  incrementScore: (score) => dispatch.game.incrementScore(score),
   resetGameState: () => dispatch.game.resetGameState()
 });
 
