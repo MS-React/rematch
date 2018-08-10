@@ -11,17 +11,17 @@ class Timer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.resetTimer === true) {
-      this.resetTimer();
+    if (this.state.elapsed !== nextState.elapsed) {
+      return true;
+    } else if (nextProps.stopTimer === true) {
+      this.stopTimer();
       this.initTimer();
       return true;
-    } else if (this.state.elapsed !== nextState.elapsed) {
-      return true;
     } else if (nextProps.pause === true && this.state.isPaused === false) {
-      this.resetTimer();
+      this.stopTimer();
       this.pauseTimer();
     } else if (nextProps.pause === false && this.state.isPaused === true) {
-      this.resetTimer();
+      this.stopTimer();
       this.resumeTimer();
     }
 
@@ -49,12 +49,10 @@ class Timer extends React.Component {
   }
 
   countDown = () => {
-    const { timeEnd } = this.props;
-
     if (this.state.elapsed === 0) {
-      this.resetTimer();
+      this.stopTimer();
       this.initTimer();
-      timeEnd();
+      this.props.timeEnd();
     } else {
       this.setState({
         elapsed: this.state.elapsed - 1
@@ -62,12 +60,12 @@ class Timer extends React.Component {
     }
   }
 
-  resetTimer = () => {
+  stopTimer = () => {
     clearInterval(this.timer);
   }
 
   componentWillUnmount() {
-    this.resetTimer();
+    this.stopTimer();
   }
 
   render() {

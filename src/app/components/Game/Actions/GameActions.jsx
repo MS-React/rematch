@@ -9,4 +9,3 @@ const GameActions = ({ setResult, confirmProof, resumePause, playing }) => (
 );
 
 export default GameActions;
-

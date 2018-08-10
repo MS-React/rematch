@@ -8,6 +8,8 @@ import ScoreSummary from './Score/Summary';
 import GameActions from './Actions';
 import Proof from './Proof';
 
+import { createProof } from '../../utils/proofGenerator';
+
 class Game extends React.PureComponent {
   state = {
     proof: {
@@ -21,7 +23,7 @@ class Game extends React.PureComponent {
 
   componentWillMount() {
     this.props.startGame();
-    this.generateProof();
+    this.createProof();
   }
 
   componentDidUpdate() {
@@ -32,19 +34,9 @@ class Game extends React.PureComponent {
     }
   }
 
-  generateProof = (resetTimer = false) => {
-    const FirstNumber = Math.floor((Math.random() * 100) + 1);
-    const SecondNumber = Math.floor((Math.random() * 100) + 1);
-    const mathOperators = ['+', '-', '/', '*'];
-    const operatorChoosed = mathOperators[Math.floor(Math.random() * mathOperators.length)];
-    const equation = `${FirstNumber} ${operatorChoosed} ${SecondNumber}`;
-    const result = Number(eval(equation));
-
+  createProof = (resetTimer = false) => {
     this.setState({
-      proof: {
-        result,
-        equation
-      },
+      proof: createProof(),
       resetTimer
     });
   }
@@ -57,6 +49,7 @@ class Game extends React.PureComponent {
 
   onConfirmProof = () => {
     const { success, failure, incrementScore } = this.props;
+
     if (this.state.proof.result === this.state.userInputResult) {
       success();
       incrementScore(10);
@@ -74,7 +67,7 @@ class Game extends React.PureComponent {
     if (game.totalProofs === 0) {
       this.endGame();
     } else {
-      this.generateProof(confirmProof);
+      this.createProof(confirmProof);
     }
   }
 
