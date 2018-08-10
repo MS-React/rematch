@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './SelectPlayer.scss';
+import './PlayerSelect.scss';
 
-class SelectPlayer extends React.PureComponent {
+class PlayerSelect extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
   setPlayer: (name) => dispatch.game.setPlayer(name)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerSelect);

@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import SelectPlayer from '../SelectPlayer';
+import PlayerSelect from '../Player/Select';
 import Game from '../Game';
 
 import '../../assets/styles/global.scss';
@@ -12,7 +11,7 @@ const Main = ({ game }) => {
     <main className="game-container">
       {
         game.player.name === null
-        && <SelectPlayer />
+        && <PlayerSelect />
         || <Game />
       }
     </main>

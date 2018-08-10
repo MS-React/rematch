@@ -47,6 +47,10 @@ export default {
       totalProofs: 10,
       success: 0,
       fails: 0
+    }),
+    startGame: (state) => ({
+      ...state,
+      playing: true
     })
   }
 };

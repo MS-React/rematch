@@ -2,7 +2,8 @@ import React from 'react';
 
 class Timer extends React.Component {
   state = {
-    elapsed: this.props.totalTimer
+    elapsed: this.props.totalTimer,
+    isPaused: false
   }
 
   componentWillMount() {
@@ -16,10 +17,29 @@ class Timer extends React.Component {
       return true;
     } else if (this.state.elapsed !== nextState.elapsed) {
       return true;
+    } else if (nextProps.pause === true && this.state.isPaused === false) {
+      this.resetTimer();
+      this.pauseTimer();
+    } else if (nextProps.pause === false && this.state.isPaused === true) {
+      this.resetTimer();
+      this.resumeTimer();
     }
 
     return false;
   }
+
+  pauseTimer = () => {
+    this.setState({
+      isPaused: true
+    });
+  }
+
+  resumeTimer = () => {
+    this.timer = setInterval(this.countDown, 1000);
+    this.setState({
+      isPaused: false
+    });
+  };
 
   initTimer = () => {
     this.timer = setInterval(this.countDown, 1000);

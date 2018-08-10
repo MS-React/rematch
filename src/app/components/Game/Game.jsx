@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Timer from '../Timer';
-import ScoreBoard from '../ScoreBoard';
+import Timer from './Timer';
+import PlayerInfo from '../Player/Info';
+import ScoreBoard from './Score/Board';
+import ScoreSummary from './Score/Summary';
+import GameActions from './Actions';
+import Proof from './Proof';
 
 class Game extends React.PureComponent {
   state = {
@@ -16,6 +20,7 @@ class Game extends React.PureComponent {
   }
 
   componentWillMount() {
+    this.props.startGame();
     this.generateProof();
   }
 
@@ -44,13 +49,13 @@ class Game extends React.PureComponent {
     });
   }
 
-  setResult = (event) => {
+  onSetResult = (event) => {
     this.setState({
       userInputResult: Number(event.target.value)
     });
   }
 
-  confirmProof = () => {
+  onConfirmProof = () => {
     const { success, failure, incrementScore } = this.props;
     if (this.state.proof.result === this.state.userInputResult) {
       success();
@@ -73,10 +78,14 @@ class Game extends React.PureComponent {
     }
   }
 
-  timeEnded = () => {
+  onTimeEnd = () => {
     this.props.failure();
     this.nextProof();
   };
+
+  onResumeAndPause = () => {
+    this.props.resumeAndPause();
+  }
 
   endGame = () => {
     this.setState({
@@ -94,6 +103,7 @@ class Game extends React.PureComponent {
 
   render() {
     const { game, player } = this.props;
+    const { resetTimer, proof } = this.state;
 
     if (this.state.endGame) {
       return (
@@ -108,26 +118,23 @@ class Game extends React.PureComponent {
 
     return (
       <div className="game">
-        <div className="information-bar">
-          <div className="playerInfo">
-            Hello! {player}
-          </div>
-          <div className="timer">
-            <Timer
-              totalTimer={game.timePerProof}
-              timeEnd={this.timeEnded}
-              resetTimer={this.state.resetTimer}
-            />
-          </div>
-          <div className="actual-score">
-            Total Score: {game.score} <br />
-            Success: {game.success} <br />
-            Failures: {game.fails} <br />
-          </div>
+        <div className="game-info">
+          <PlayerInfo player={player} />
+          <Timer
+            totalTimer={game.timePerProof}
+            timeEnd={this.onTimeEnd}
+            resetTimer={resetTimer}
+            pause={!game.playing}
+          />
+          <ScoreSummary results={game} />
         </div>
-        {this.state.proof.equation} = ?
-        <input type="text" onChange={this.setResult} />
-        <button onClick={this.confirmProof}>Confirm</button>
+        <Proof proof={proof} />
+        <GameActions
+          setResult={this.onSetResult}
+          confirmProof={this.onConfirmProof}
+          resumePause={this.onResumeAndPause}
+          playing={game.playing}
+        />
       </div>
     );
   }
@@ -135,7 +142,7 @@ class Game extends React.PureComponent {
 
 const mapStateToProps = state => ({
   game: state.game,
-  player: state.game.player.name
+  player: state.game.player
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -143,7 +150,9 @@ const mapDispatchToProps = dispatch => ({
   failure: () => dispatch.game.incrementFails(),
   proofsLeft: () => dispatch.game.proofsLeft(),
   incrementScore: (score) => dispatch.game.incrementScore(score),
-  resetGameState: () => dispatch.game.resetGameState()
+  resetGameState: () => dispatch.game.resetGameState(),
+  resumeAndPause: () => dispatch.game.resumeAndPause(),
+  startGame: () => dispatch.game.startGame()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
