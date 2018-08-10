@@ -4,17 +4,18 @@ describe('Store', () => {
   describe('WHEN initialize', () => {
     const initialState = {
       game: {
+        score: 0,
+        success: 0,
         fails: 0,
         maxFailures: 5,
-        playing: false,
-        score: 0,
-        started: false,
-        success: 0,
-        timePerProof: 30,
         totalProofs: 10,
+        timePerProof: 30,
+        playing: false,
+        started: false,
         player: {
           name: null
-        }
+        },
+        proofs: []
       }
     };
 

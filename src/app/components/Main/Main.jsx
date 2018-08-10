@@ -9,11 +9,8 @@ import '../../assets/styles/global.scss';
 const Main = ({ game }) => {
   return (
     <main className="game-container">
-      {
-        game.player.name === null
-        && <PlayerSelect />
-        || <Game />
-      }
+      {!game.started && <PlayerSelect />}
+      <Game />
     </main>
   )
 };

@@ -7,41 +7,31 @@ class Timer extends React.Component {
   }
 
   componentWillMount() {
-    this.initTimer();
+    this.start();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.elapsed !== nextState.elapsed) {
       return true;
-    } else if (nextProps.stopTimer === true) {
-      this.stopTimer();
-      this.initTimer();
+    } else if (nextProps.resetTimer === true) {
+      this.stop();
+      this.start();
       return true;
     } else if (nextProps.pause === true && this.state.isPaused === false) {
-      this.stopTimer();
-      this.pauseTimer();
+      this.stop();
+      this.pause();
     } else if (nextProps.pause === false && this.state.isPaused === true) {
-      this.stopTimer();
-      this.resumeTimer();
+      this.stop();
+      this.resume();
     }
-
     return false;
   }
 
-  pauseTimer = () => {
-    this.setState({
-      isPaused: true
-    });
+  componentWillUnmount() {
+    this.stop();
   }
 
-  resumeTimer = () => {
-    this.timer = setInterval(this.countDown, 1000);
-    this.setState({
-      isPaused: false
-    });
-  };
-
-  initTimer = () => {
+  start = () => {
     this.timer = setInterval(this.countDown, 1000);
     this.setState({
       elapsed: this.props.totalTimer
@@ -50,8 +40,8 @@ class Timer extends React.Component {
 
   countDown = () => {
     if (this.state.elapsed === 0) {
-      this.stopTimer();
-      this.initTimer();
+      this.stop();
+      this.start();
       this.props.timeEnd();
     } else {
       this.setState({
@@ -60,17 +50,26 @@ class Timer extends React.Component {
     }
   }
 
-  stopTimer = () => {
-    clearInterval(this.timer);
+  pause = () => {
+    this.setState({
+      isPaused: true
+    });
   }
 
-  componentWillUnmount() {
-    this.stopTimer();
+  resume = () => {
+    this.timer = setInterval(this.countDown, 1000);
+    this.setState({
+      isPaused: false
+    });
+  };
+
+  stop = () => {
+    clearInterval(this.timer);
   }
 
   render() {
     return (
-      <div className="timer">
+      <div key={'game-timer'} className="timer">
         {this.state.elapsed}
       </div>
     );

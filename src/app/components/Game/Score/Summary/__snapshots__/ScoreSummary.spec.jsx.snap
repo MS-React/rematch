@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreSummary should show user the summary reportto the user 1`] = `
+<div
+  className="score-summary"
+>
+  Total Score: 
+  0
+   
+  <br />
+  Success: 
+  0
+   
+  <br />
+  Failures: 
+  0
+   
+  <br />
+</div>
+`;

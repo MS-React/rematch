@@ -2,4 +2,13 @@
   display: flex;
   align-items: center;
   align-content: center;
+
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
 }

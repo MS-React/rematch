@@ -22,7 +22,6 @@ class Game extends React.PureComponent {
   }
 
   componentWillMount() {
-    this.props.startGame();
     this.createProof();
   }
 
@@ -94,9 +93,19 @@ class Game extends React.PureComponent {
     });
   }
 
+  onStartGame = () => {
+    this.props.startGame();
+  }
+
   render() {
     const { game, player } = this.props;
     const { resetTimer, proof } = this.state;
+
+    if (!game.started) {
+      return (
+        <button onClick={this.onStartGame}>Play!</button>
+      );
+    }
 
     if (this.state.endGame) {
       return (
@@ -139,13 +148,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  startGame: () => dispatch.game.startGame(),
   success: () => dispatch.game.incrementSuccess(),
   failure: () => dispatch.game.incrementFails(),
   proofsLeft: () => dispatch.game.proofsLeft(),
   incrementScore: (score) => dispatch.game.incrementScore(score),
   resetGameState: () => dispatch.game.resetGameState(),
-  resumeAndPause: () => dispatch.game.resumeAndPause(),
-  startGame: () => dispatch.game.startGame()
+  resumeAndPause: () => dispatch.game.resumeAndPause()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

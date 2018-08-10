@@ -2,7 +2,17 @@
 
 - Rematch is a State Manager Framework based on Redux. Its main intent is to remove all the boilerplate that comes from Redux standard implementation by providing a simpler API based on configuration over composition.
 
-# Mejoras
+# What is Rematch
+
+# Differences with Redux
+
+# Rematch Core
+
+# Goals
+
+# Is is useful for large applications?
+
+# Mejoras al Juego
 
 - Modificar settings
 - Agregar docs

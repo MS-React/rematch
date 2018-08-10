@@ -7,6 +7,7 @@ export default {
     totalProofs: 10,
     timePerProof: 30,
     playing: false,
+    started: false,
     player: {
       name: null
     },
@@ -50,7 +51,8 @@ export default {
     }),
     startGame: (state) => ({
       ...state,
-      playing: true
+      playing: true,
+      started: true
     })
   }
 };

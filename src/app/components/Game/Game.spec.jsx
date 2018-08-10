@@ -1,20 +1,31 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import configureStore from 'redux-mock-store'
+import { init } from '@rematch/core'
+import * as models from '../../models'
 import renderer from 'react-test-renderer';
+
+jest.mock('../../utils/proofGenerator', () => {
+  return {
+    createProof: jest.fn().mockReturnValue({
+      equation: '1 + 1',
+      result: 2
+    })
+  };
+});
 
 import Game from './Game';
 
 describe('<Game />', () => {
-  const mockStore = configureStore();
-  const initialState = {};
+  let store;
+
+  beforeAll(() => {
+    store = init({ models });
+  });
 
   describe('WHEN initializes', () => {
     let wrapper;
-    let store
 
     beforeEach(() => {
-      store = mockStore(initialState);
       wrapper = shallow(<Game store={store} />);
     });
 

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerSelect should show the user an input to choose his nickname an a button to start 1`] = `"<div class=\\"selectPlayer\\"><div>Are you good with Maths? Lets see!</div><div>Choose a Name to start!</div><input type=\\"text\\"/></div>"`;
