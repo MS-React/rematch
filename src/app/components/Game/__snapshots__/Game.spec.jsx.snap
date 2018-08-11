@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Game /> WHEN initializes THEN it should render a view to start 1`] = `"<button>Play!</button>"`;
+exports[`<Game /> initializes should render a button to start 1`] = `"<button>Play!</button>"`;
+
+exports[`<Game /> start should render <PlayerInfo> , <Timer>, <ScoreSummary>, <Proof> and <GameActions> components 1`] = `"<div class=\\"game\\"><div class=\\"game-info\\"><div class=\\"playerInfo\\">Hello! </div><div class=\\"timer\\">30</div><div class=\\"score-summary\\">Total Score: 0 <br/>Success: 0 <br/>Failures: 0 <br/></div></div><div class=\\"game-proof\\">1 - 1 = ?</div><div class=\\"game-actions\\"><input type=\\"text\\"/><button>Confirm</button><button>Resume</button></div></div>"`;

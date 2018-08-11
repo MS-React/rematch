@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Timer from './Timer';
@@ -11,6 +12,18 @@ import Proof from './Proof';
 import { createProof } from '../../utils/proofGenerator';
 
 class Game extends React.PureComponent {
+  static propTypes = {
+    game: PropTypes.shape({}),
+    player: PropTypes.shape({}),
+    startGame: PropTypes.func,
+    resumeAndPause: PropTypes.func,
+    failure: PropTypes.func,
+    success: PropTypes.func,
+    incrementScore: PropTypes.func,
+    proofsLeft: PropTypes.func,
+    resetGameState: PropTypes.func,
+  }
+
   state = {
     proof: {
       result: null,
