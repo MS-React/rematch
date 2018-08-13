@@ -1,6 +1,6 @@
 # Rematch FW
 
-- Rematch is a State Manager Framework based on Redux. Its main intent is to remove all the boilerplate that comes from Redux standard implementation by providing a simpler API based on configuration over composition.
+Rematch is a State Manager Framework based on Redux. Its main intent is to remove all the boilerplate that comes from Redux standard implementation by providing a simpler API based on configuration over composition.
 
 # Purpose and differences with Redux
 
@@ -122,6 +122,6 @@ This is where Rematch appears, not in order to remove redux, instead of enhance 
 
 Rematch has a [Migration Guide](https://rematch.gitbooks.io/rematch/#migrating-from-redux) which is really easy.
 
-## Ref docs:
+## Documentation:
 
-- ### [Rematch](https://rematch.gitbooks.io/rematch/)
+  **[Rematch](https://rematch.gitbooks.io/rematch/)**
