@@ -54,14 +54,14 @@
       "**/src/app/**/*.{js,jsx}",
       "!**/src/app/index.jsx"
     ],
-    "coverageDirectory": "buildlog/coverage",
+    "coverageDirectory": "./buildlog/coverage",
     "reporters": [
       "default",
       [
         "./node_modules/jest-html-reporter",
         {
           "pageTitle": "Rematch",
-          "outputPath": "buildlog/test-results.html",
+          "outputPath": "./buildlog/test-results.html",
           "includeFailureMsg": true,
           "includeConsoleLog": true,
           "theme": "darkTheme",
