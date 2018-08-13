@@ -2,19 +2,17 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { init } from '@rematch/core'
-import * as models from '../../models'
+import { init } from '@rematch/core';
+import * as models from '../../models';
 
 import Main from './Main';
 
-jest.mock('../../utils/proofGenerator', () => {
-  return {
-    createProof: jest.fn().mockReturnValue({
-      equation: '1 + 1',
-      result: 2
-    })
-  };
-});
+jest.mock('../../utils/proofGenerator', () => ({
+  createProof: jest.fn().mockReturnValue({
+    equation: '1 + 1',
+    result: 2,
+  }),
+}));
 
 describe('Main', () => {
   let wrapper;
@@ -29,7 +27,7 @@ describe('Main', () => {
       wrapper = mount(
         <Provider store={store}>
           <Main />
-        </Provider>
+        </Provider>,
       );
     });
 
@@ -45,7 +43,7 @@ describe('Main', () => {
       wrapper = mount(
         <Provider store={store}>
           <Main />
-        </Provider>
+        </Provider>,
       );
     });
 

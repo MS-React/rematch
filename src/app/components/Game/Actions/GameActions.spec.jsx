@@ -13,7 +13,7 @@ describe('GameActions', () => {
       setResult: jest.fn(),
       confirmProof: jest.fn(),
       resumePause: jest.fn(),
-      playing: false
+      playing: false,
     };
     wrapper = shallow(<GameActions {...defaultProps} />);
   });

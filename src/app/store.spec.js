@@ -13,10 +13,10 @@ describe('Store', () => {
         playing: false,
         started: false,
         player: {
-          name: null
+          name: null,
         },
-        proofs: []
-      }
+        proofs: [],
+      },
     };
 
     it('should start with the expected initial State', () => {

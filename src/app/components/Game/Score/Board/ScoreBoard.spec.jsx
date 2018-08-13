@@ -13,7 +13,7 @@ describe('ScoreBoard', () => {
       success: 0,
       fails: 0,
       score: 0,
-      resetGame: jest.fn()
+      resetGame: jest.fn(),
     };
     wrapper = shallow(<ScoreBoard {...defaultProps} />);
   });

@@ -13,15 +13,18 @@ exports[`ScoreBoard should show user result report and a button to restart the g
   <div
     className="user-report"
   >
-    Successful : 
+    Successful :
+     
     0
      
     <br />
-    Fails : 
+    Fails :
+     
     0
      
     <br />
-    Total Score : 
+    Total Score :
+     
     0
      
     <br />

@@ -13,8 +13,8 @@ describe('ScoreSummary', () => {
       results: {
         success: 0,
         fails: 0,
-        score: 0
-      }
+        score: 0,
+      },
     };
     wrapper = shallow(<ScoreSummary {...defaultProps} />);
   });

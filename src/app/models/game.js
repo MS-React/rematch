@@ -9,50 +9,48 @@ export default {
     playing: false,
     started: false,
     player: {
-      name: null
+      name: null,
     },
-    proofs: []
+    proofs: [],
   },
   reducers: {
     incrementScore: (state, payload) => ({
       ...state,
-      score: state.score + Number(payload)
+      score: state.score + Number(payload),
     }),
-    incrementSuccess: (state) => ({
+    incrementSuccess: state => ({
       ...state,
-      success: ++state.success
+      success: ++state.success,
     }),
-    incrementFails: (state) => ({
+    incrementFails: state => ({
       ...state,
-      fails: ++state.fails
+      fails: ++state.fails,
     }),
-    proofsLeft: (state) => ({
+    proofsLeft: state => ({
       ...state,
-      totalProofs: --state.totalProofs
+      totalProofs: --state.totalProofs,
     }),
-    setPlayer: (state, payload) => {
-      return {
-        ...state,
-        player: {
-          name: String(payload)
-        }
-      }
-    },
-    resumeAndPause: (state) => ({
+    setPlayer: (state, payload) => ({
       ...state,
-      playing: !state.playing
+      player: {
+        name: String(payload),
+      },
     }),
-    resetGameState: (state) => ({
+    resumeAndPause: state => ({
+      ...state,
+      playing: !state.playing,
+    }),
+    resetGameState: state => ({
       ...state,
       score: 0,
       totalProofs: 10,
       success: 0,
-      fails: 0
+      fails: 0,
     }),
-    startGame: (state) => ({
+    startGame: state => ({
       ...state,
       playing: true,
-      started: true
-    })
-  }
+      started: true,
+    }),
+  },
 };

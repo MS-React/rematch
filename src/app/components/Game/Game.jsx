@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Timer from './Timer';
-import InfoPlayer from '../Player/Info';
+import PlayerInfo from '../Player/Info';
 import ScoreBoard from './Score/Board';
 import ScoreSummary from './Score/Summary';
 import GameActions from './Actions';
@@ -13,25 +13,25 @@ import { createProof } from '../../utils/proofGenerator';
 
 class Game extends React.PureComponent {
   static propTypes = {
-    game: PropTypes.shape({}),
-    player: PropTypes.shape({}),
-    startGame: PropTypes.func,
-    resumeAndPause: PropTypes.func,
-    failure: PropTypes.func,
-    success: PropTypes.func,
-    incrementScore: PropTypes.func,
-    proofsLeft: PropTypes.func,
-    resetGameState: PropTypes.func,
+    game: PropTypes.shape({}).isRequired,
+    player: PropTypes.shape({}).isRequired,
+    startGame: PropTypes.func.isRequired,
+    resumeAndPause: PropTypes.func.isRequired,
+    failure: PropTypes.func.isRequired,
+    success: PropTypes.func.isRequired,
+    incrementScore: PropTypes.func.isRequired,
+    proofsLeft: PropTypes.func.isRequired,
+    resetGameState: PropTypes.func.isRequired,
   }
 
   state = {
     proof: {
       result: null,
-      equation: null
+      equation: null,
     },
     userInputResult: null,
     resetTimer: false,
-    endGame: false
+    endGame: false,
   }
 
   componentWillMount() {
@@ -40,22 +40,15 @@ class Game extends React.PureComponent {
 
   componentDidUpdate() {
     if (this.state.resetTimer === true) {
-      this.setState({
-        resetTimer: false
+      this.setState({ // eslint-disable-line
+        resetTimer: false,
       });
     }
   }
 
-  createProof = (resetTimer = false) => {
-    this.setState({
-      proof: createProof(),
-      resetTimer
-    });
-  }
-
   onSetResult = (event) => {
     this.setState({
-      userInputResult: Number(event.target.value)
+      userInputResult: Number(event.target.value),
     });
   }
 
@@ -72,6 +65,33 @@ class Game extends React.PureComponent {
     this.nextProof(true);
   }
 
+  onTimeEnd = () => {
+    this.props.failure();
+    this.nextProof();
+  };
+
+  onResumeAndPause = () => {
+    this.props.resumeAndPause();
+  }
+
+  onStartGame = () => {
+    this.props.startGame();
+  }
+
+  endGame = () => {
+    this.setState({
+      endGame: true,
+    });
+  }
+
+  resetGame = () => {
+    this.setState({
+      endGame: false,
+    }, () => {
+      this.props.resetGameState();
+    });
+  }
+
   nextProof = (confirmProof = false) => {
     const { game, proofsLeft } = this.props;
     proofsLeft();
@@ -83,31 +103,11 @@ class Game extends React.PureComponent {
     }
   }
 
-  onTimeEnd = () => {
-    this.props.failure();
-    this.nextProof();
-  };
-
-  onResumeAndPause = () => {
-    this.props.resumeAndPause();
-  }
-
-  endGame = () => {
+  createProof = (resetTimer = false) => {
     this.setState({
-      endGame: true
+      proof: createProof(),
+      resetTimer,
     });
-  }
-
-  resetGame = () => {
-    this.setState({
-      endGame: false
-    }, () => {
-      this.props.resetGameState();
-    });
-  }
-
-  onStartGame = () => {
-    this.props.startGame();
   }
 
   render() {
@@ -116,7 +116,9 @@ class Game extends React.PureComponent {
 
     if (!game.started) {
       return (
-        <button onClick={this.onStartGame}>Play!</button>
+        <button type="submit" onClick={this.onStartGame}>
+          Play!
+        </button>
       );
     }
 
@@ -134,7 +136,7 @@ class Game extends React.PureComponent {
     return (
       <div className="game">
         <div className="game-info">
-          <InfoPlayer player={player} />
+          <PlayerInfo player={player} />
           <Timer
             totalTimer={game.timePerProof}
             timeEnd={this.onTimeEnd}
@@ -157,7 +159,7 @@ class Game extends React.PureComponent {
 
 const mapStateToProps = state => ({
   game: state.game,
-  player: state.game.player
+  player: state.game.player,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -165,9 +167,9 @@ const mapDispatchToProps = dispatch => ({
   success: () => dispatch.game.incrementSuccess(),
   failure: () => dispatch.game.incrementFails(),
   proofsLeft: () => dispatch.game.proofsLeft(),
-  incrementScore: (score) => dispatch.game.incrementScore(score),
+  incrementScore: score => dispatch.game.incrementScore(score),
   resetGameState: () => dispatch.game.resetGameState(),
-  resumeAndPause: () => dispatch.game.resumeAndPause()
+  resumeAndPause: () => dispatch.game.resumeAndPause(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

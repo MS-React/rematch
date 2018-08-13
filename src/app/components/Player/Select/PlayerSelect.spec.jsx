@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { init } from '@rematch/core'
-import * as models from '../../../models'
+import { init } from '@rematch/core';
+import * as models from '../../../models';
 
 import PlayerSelect from './PlayerSelect';
 
@@ -30,8 +30,8 @@ describe('PlayerSelect', () => {
       wrapper = Component.dive();
       wrapper.find('input').prop('onChange')({
         target: {
-          value: 'John Doe'
-        }
+          value: 'John Doe',
+        },
       });
     });
 

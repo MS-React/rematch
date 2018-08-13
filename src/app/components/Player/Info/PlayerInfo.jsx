@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InfoPlayer = ({ name }) => (
-  <div key={'player-info'} className="playerInfo">
-    Hello! {name}
+const PlayerInfo = ({ player }) => (
+  <div key="player-info" className="playerInfo">
+    Hello!
+    {' '}
+    {player.name}
   </div>
 );
 
-InfoPlayer.propTypes = {
+PlayerInfo.propTypes = {
   player: PropTypes.shape({
-    name: PropTypes.string
-  }).isRequired
+    name: PropTypes.string,
+  }).isRequired,
 };
 
-export default InfoPlayer;
+export default PlayerInfo;

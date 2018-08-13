@@ -11,8 +11,8 @@ describe('PlayerInfo', () => {
   beforeEach(() => {
     defaultProps = {
       player: {
-        name: 'John Doe'
-      }
+        name: 'John Doe',
+      },
     };
     wrapper = shallow(<PlayerInfo {...defaultProps} />);
   });

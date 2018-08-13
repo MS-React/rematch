@@ -8,6 +8,6 @@ export function createProof() {
 
   return {
     equation,
-    result
+    result,
   };
 }

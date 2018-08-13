@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Timer extends React.Component {
   state = {
     elapsed: this.props.totalTimer,
-    isPaused: false
+    isPaused: false,
   }
 
   componentWillMount() {
@@ -13,11 +14,11 @@ class Timer extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.elapsed !== nextState.elapsed) {
       return true;
-    } else if (nextProps.resetTimer === true) {
+    } if (nextProps.resetTimer === true) {
       this.stop();
       this.start();
       return true;
-    } else if (nextProps.pause === true && this.state.isPaused === false) {
+    } if (nextProps.pause === true && this.state.isPaused === false) {
       this.stop();
       this.pause();
     } else if (nextProps.pause === false && this.state.isPaused === true) {
@@ -34,7 +35,7 @@ class Timer extends React.Component {
   start = () => {
     this.timer = setInterval(this.countDown, 1000);
     this.setState({
-      elapsed: this.props.totalTimer
+      elapsed: this.props.totalTimer,
     });
   }
 
@@ -45,21 +46,21 @@ class Timer extends React.Component {
       this.props.timeEnd();
     } else {
       this.setState({
-        elapsed: this.state.elapsed - 1
+        elapsed: this.state.elapsed - 1,
       });
     }
   }
 
   pause = () => {
     this.setState({
-      isPaused: true
+      isPaused: true,
     });
   }
 
   resume = () => {
     this.timer = setInterval(this.countDown, 1000);
     this.setState({
-      isPaused: false
+      isPaused: false,
     });
   };
 
@@ -69,11 +70,23 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <div key={'game-timer'} className="timer">
+      <div key="game-timer" className="timer">
         {this.state.elapsed}
       </div>
     );
   }
 }
+
+Timer.propTypes = {
+  totalTimer: PropTypes.number.isRequired,
+  resetTimer: PropTypes.bool,
+  pause: PropTypes.bool,
+  timeEnd: PropTypes.func.isRequired,
+};
+
+Timer.defaultProps = {
+  resetTimer: false,
+  pause: false,
+};
 
 export default Timer;

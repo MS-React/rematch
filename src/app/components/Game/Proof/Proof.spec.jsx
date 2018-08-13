@@ -11,8 +11,8 @@ describe('Proof', () => {
   beforeEach(() => {
     defaultProps = {
       proof: {
-        equation: '1 + 1'
-      }
+        equation: '1 + 1',
+      },
     };
     wrapper = shallow(<Proof {...defaultProps} />);
   });

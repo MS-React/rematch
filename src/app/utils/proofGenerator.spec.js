@@ -24,7 +24,7 @@ describe('proofGenerator', () => {
     it('should create a random aritmetic basic math proof and return the equation in a string and the result', () => {
       expect(proof).toEqual(expect.objectContaining({
         equation: '1 - 1',
-        result: 0
+        result: 0,
       }));
     });
   });

@@ -14,7 +14,7 @@ describe('Timer', () => {
       totalTimer: 30,
       isPaused: false,
       pause: false,
-      timeEnd: jest.fn()
+      timeEnd: jest.fn(),
     };
 
     wrapper = shallow(<Timer {...defaultProps} />);
@@ -40,7 +40,7 @@ describe('Timer', () => {
   describe('pause', () => {
     beforeEach(() => {
       wrapper.setProps({
-        pause: true
+        pause: true,
       });
       jest.advanceTimersByTime(1000);
       jest.advanceTimersByTime(1000);
@@ -56,7 +56,7 @@ describe('Timer', () => {
     beforeEach(() => {
       wrapper.setState({ isPaused: true });
       wrapper.setProps({
-        pause: false
+        pause: false,
       });
       jest.advanceTimersByTime(1000);
       wrapper.update();
@@ -70,7 +70,7 @@ describe('Timer', () => {
   describe('reset timer', () => {
     beforeEach(() => {
       wrapper.setProps({
-        resetTimer: true
+        resetTimer: true,
       });
       wrapper.update();
     });

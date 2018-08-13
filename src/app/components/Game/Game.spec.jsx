@@ -1,19 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { init } from '@rematch/core'
-import * as models from '../../models'
+import { init } from '@rematch/core';
 import renderer from 'react-test-renderer';
+import * as models from '../../models';
 
 import Game from './Game';
 
-jest.mock('../../utils/proofGenerator', () => {
-  return {
-    createProof: jest.fn().mockReturnValue({
-      equation: '1 - 1',
-      result: 0
-    })
-  };
-});
+jest.mock('../../utils/proofGenerator', () => ({
+  createProof: jest.fn().mockReturnValue({
+    equation: '1 - 1',
+    result: 0,
+  }),
+}));
 
 describe('<Game />', () => {
   let store;
@@ -22,7 +20,7 @@ describe('<Game />', () => {
   beforeAll(() => {
     store = init({ models });
     store.getState().game.player = {
-      name: 'John Doe'
+      name: 'John Doe',
     };
     store.dispatch.game = {
       ...store.dispatch.game,
@@ -32,7 +30,7 @@ describe('<Game />', () => {
       incrementSuccess: jest.fn(),
       incrementScore: jest.fn(),
       proofsLeft: jest.fn(),
-      resetGameState: jest.fn()
+      resetGameState: jest.fn(),
     };
   });
 
@@ -52,7 +50,7 @@ describe('<Game />', () => {
         expect(store.dispatch.game.startGame).toHaveBeenCalled();
       });
 
-      it('should render <InfoPlayer> , <Timer>, <ScoreSummary>, <Proof> and <GameActions> components', () => {
+      it('should render <PlayerInfo> , <Timer>, <ScoreSummary>, <Proof> and <GameActions> components', () => {
         store.getState().game.started = true;
         expect(renderer.create(wrapper.html()).toJSON())
           .toMatchSnapshot();
@@ -125,7 +123,7 @@ describe('<Game />', () => {
       store.getState().game.started = true;
       wrapper = shallow(<Game store={store} />).dive();
       wrapper.setState({
-        endGame: true
+        endGame: true,
       });
       scoreBoardComponent = wrapper.find('ScoreBoard');
     });

@@ -4,6 +4,8 @@ exports[`PlayerInfo should show the user an input to choose his nickname an a bu
 <div
   className="playerInfo"
 >
-  Hello! 
+  Hello!
+   
+  John Doe
 </div>
 `;
