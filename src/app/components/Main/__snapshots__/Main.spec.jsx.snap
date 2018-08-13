@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main WHEN game did not start yet should show the a <PlayerSelect /> and the <Game /> start button 1`] = `"<main class=\\"game-container\\"><div class=\\"selectPlayer\\"><div>Are you good with Maths? Lets see!</div><div>Choose a Name to start!</div><input type=\\"text\\"></div><button>Play!</button></main>"`;
+
+exports[`Main WHEN game started should display the actual game and no <PlayerSelect /> 1`] = `"<main class=\\"game-container\\"><div class=\\"game\\"><div class=\\"game-info\\"><div class=\\"playerInfo\\">Hello! </div><div class=\\"timer\\">30</div><div class=\\"score-summary\\">Total Score: 0 <br>Success: 0 <br>Failures: 0 <br></div></div><div class=\\"game-proof\\">1 + 1 = ?</div><div class=\\"game-actions\\"><input type=\\"text\\"><button class=\\"action-confirmProof\\">Confirm</button><button>Pause</button></div></div></main>"`;

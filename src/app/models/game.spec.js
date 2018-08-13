@@ -67,12 +67,29 @@ describe("Game model", () => {
     });
   });
 
+  describe("resetGameState", () => {
+    it("should reset the game state status", () => {
+      store.dispatch.game.resetGameState();
+
+      const gameState = store.getState().game;
+      expect(gameState).toEqual(expect.objectContaining({
+        score: 0,
+        totalProofs: 10,
+        success: 0,
+        fails: 0
+      }));
+    });
+  });
+
   describe("startGame", () => {
-    it("should update the started status in the state", () => {
+    it("should update playing status in the state", () => {
       store.dispatch.game.startGame();
 
       const gameState = store.getState().game;
-      expect(gameState.started).toBeTruthy();
+      expect(gameState).toEqual(expect.objectContaining({
+        playing: true,
+        started: true
+      }));
     });
   });
 });

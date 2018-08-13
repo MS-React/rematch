@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameActions should show game actions to confirm the proof and pause/resume with pause as first to the user 1`] = `
+<div
+  className="game-actions"
+>
+  <input
+    onChange={[MockFunction]}
+    type="text"
+  />
+  <button
+    className="action-confirmProof"
+    onClick={[MockFunction]}
+  >
+    Confirm
+  </button>
+  <button
+    onClick={[MockFunction]}
+  >
+    Resume
+  </button>
+</div>
+`;

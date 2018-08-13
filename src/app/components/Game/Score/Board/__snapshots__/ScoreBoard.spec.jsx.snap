@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreBoard should show user result report and a button to restart the game 1`] = `
+<div
+  className="score-board"
+>
+  <h2>
+    Score Board
+  </h2>
+  <h3>
+    Hey! good match
+  </h3>
+  <div
+    className="user-report"
+  >
+    Successful : 
+    0
+     
+    <br />
+    Fails : 
+    0
+     
+    <br />
+    Total Score : 
+    0
+     
+    <br />
+    <button
+      onClick={[MockFunction]}
+    >
+      Try Again!
+    </button>
+  </div>
+</div>
+`;
