@@ -14,7 +14,8 @@
     "lint": "eslint --ext .js --ext .jsx --fix ./src/app --o buildlog/linter.html -f html",
     "sass-lint": "sass-lint --config .sasslintrc.json \"src/app/**/*.scss\" --verbose --no-exit",
     "prevalidate": "rimraf buildlog",
-    "validate": "run-p -c lint sass-lint test"
+    "validate": "run-p -c lint sass-lint test",
+    "prepush": "npm run validate"
   },
   "dependencies": {
     "@rematch/core": "^1.0.0-beta.4",
