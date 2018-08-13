@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Timer from './Timer';
-import PlayerInfo from '../Player/Info';
+import InfoPlayer from '../Player/Info';
 import ScoreBoard from './Score/Board';
 import ScoreSummary from './Score/Summary';
 import GameActions from './Actions';
@@ -31,7 +31,7 @@ class Game extends React.PureComponent {
     },
     userInputResult: null,
     resetTimer: false,
-    gameEnd: false
+    endGame: false
   }
 
   componentWillMount() {
@@ -134,7 +134,7 @@ class Game extends React.PureComponent {
     return (
       <div className="game">
         <div className="game-info">
-          <PlayerInfo player={player} />
+          <InfoPlayer player={player} />
           <Timer
             totalTimer={game.timePerProof}
             timeEnd={this.onTimeEnd}

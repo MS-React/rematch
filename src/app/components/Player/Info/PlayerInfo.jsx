@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InfoPlayer = ({ player }) => (
+const InfoPlayer = ({ name }) => (
   <div key={'player-info'} className="playerInfo">
-    Hello! {player.name}
+    Hello! {name}
   </div>
 );
 
