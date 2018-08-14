@@ -17,6 +17,11 @@ describe('Store', () => {
         },
         proofs: [],
       },
+      happyFace: {
+        display: false,
+        showHappyFace: false,
+        showUnhappyFace: false,
+      },
     };
 
     it('should start with the expected initial State', () => {

@@ -8,6 +8,7 @@ import ScoreBoard from './Score/Board';
 import ScoreSummary from './Score/Summary';
 import GameActions from './Actions';
 import Proof from './Proof';
+import HappyFace from '../HappyFace';
 
 import { createProof } from '../../utils/proofGenerator';
 
@@ -22,6 +23,11 @@ class Game extends React.PureComponent {
     incrementScore: PropTypes.func.isRequired,
     proofsLeft: PropTypes.func.isRequired,
     resetGameState: PropTypes.func.isRequired,
+    happyFace: PropTypes.shape({}),
+  }
+
+  static defaultProps = {
+    happyFace: {},
   }
 
   state = {
@@ -111,7 +117,7 @@ class Game extends React.PureComponent {
   }
 
   render() {
-    const { game, player } = this.props;
+    const { game, player, happyFace } = this.props;
     const { resetTimer, proof } = this.state;
 
     if (!game.started) {
@@ -152,6 +158,7 @@ class Game extends React.PureComponent {
           resumePause={this.onResumeAndPause}
           playing={game.playing}
         />
+        <HappyFace {...happyFace} />
       </div>
     );
   }
@@ -160,6 +167,7 @@ class Game extends React.PureComponent {
 const mapStateToProps = state => ({
   game: state.game,
   player: state.game.player,
+  happyFace: state.happyFace,
 });
 
 const mapDispatchToProps = dispatch => ({

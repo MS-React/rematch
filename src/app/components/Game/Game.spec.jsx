@@ -115,6 +115,19 @@ describe('<Game />', () => {
         expect(store.dispatch.game.incrementFails).toHaveBeenCalled();
       });
     });
+
+    describe('updates with resetTimer', () => {
+      beforeEach(() => {
+        wrapper.setState({
+          resetTimer: true,
+        });
+        wrapper.update();
+      });
+
+      it('should set resetTimer to false', () => {
+        expect(timerComponent.prop('resetTimer')).toBeFalsy();
+      });
+    });
   });
 
   describe('finish', () => {
