@@ -4,8 +4,6 @@ exports[`Proof should show user the summary reportto the user 1`] = `
 <div
   className="game-proof"
 >
-  1 + 1
-   
-  = ?
+  1 + 1 = ?
 </div>
 `;

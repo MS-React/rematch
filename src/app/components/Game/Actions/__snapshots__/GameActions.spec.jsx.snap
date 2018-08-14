@@ -11,11 +11,13 @@ exports[`GameActions should show game actions to confirm the proof and pause/res
   <button
     className="action-confirmProof"
     onClick={[MockFunction]}
+    type="submit"
   >
     Confirm
   </button>
   <button
     onClick={[MockFunction]}
+    type="submit"
   >
     Resume
   </button>

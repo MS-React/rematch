@@ -81,9 +81,9 @@ describe('Timer', () => {
     });
   });
 
-  describe('timer finish', () => {
+  describe('finish', () => {
     beforeEach(() => {
-      jest.advanceTimersByTime(30000);
+      jest.advanceTimersByTime(40000);
     });
 
     it('should trigger timeEnd callback from props', () => {

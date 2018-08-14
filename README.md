@@ -2,7 +2,7 @@
 
 ### Master
 
-[![Build Status](https://travis-ci.com/MS-React/react-base.svg?branch=master)](https://travis-ci.com/MS-React/react-base)
+[![Build Status](https://travis-ci.com/MS-React/rematch.svg?branch=master)](https://travis-ci.com/MS-React/rematch)
 
 # Rematch FW
 

@@ -4,7 +4,7 @@ export function createProof() {
   const mathOperators = ['+', '-', '/', '*'];
   const operatorChoosed = mathOperators[Math.floor(Math.random() * mathOperators.length)];
   const equation = `${FirstNumber} ${operatorChoosed} ${SecondNumber}`;
-  const result = Number(eval(equation));
+  const result = Number(eval(equation)); // eslint-disable-line no-eval
 
   return {
     equation,

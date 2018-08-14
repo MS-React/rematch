@@ -20,15 +20,15 @@ export default {
     }),
     incrementSuccess: state => ({
       ...state,
-      success: ++state.success,
+      success: state.success + 1,
     }),
     incrementFails: state => ({
       ...state,
-      fails: ++state.fails,
+      fails: state.fails + 1,
     }),
     proofsLeft: state => ({
       ...state,
-      totalProofs: --state.totalProofs,
+      totalProofs: state.totalProofs - 1,
     }),
     setPlayer: (state, payload) => ({
       ...state,

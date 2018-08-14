@@ -4,20 +4,16 @@ exports[`ScoreSummary should show user the summary reportto the user 1`] = `
 <div
   className="score-summary"
 >
-  Total Score:
-   
+  Total Score: 
   0
    
   <br />
-  Success:
-   
+  Success: 
   0
    
   <br />
-  Failures:
-   
+  Failures: 
   0
-   
   <br />
 </div>
 `;

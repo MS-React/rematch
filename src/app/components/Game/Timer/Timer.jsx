@@ -45,9 +45,9 @@ class Timer extends React.Component {
       this.start();
       this.props.timeEnd();
     } else {
-      this.setState({
-        elapsed: this.state.elapsed - 1,
-      });
+      this.setState(prevState => ({
+        elapsed: prevState.elapsed - 1,
+      }));
     }
   }
 

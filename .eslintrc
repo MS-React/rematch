@@ -40,6 +40,18 @@
         ]
       }
     ],
+    "react/jsx-one-expression-per-line": [
+      {
+        "allow": "literal"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "object-property-newline": [
+      "error",
+      {
+        "allowMultiplePropertiesPerLine": true
+      }
+    ],
     "indent": [
       "error",
       2,

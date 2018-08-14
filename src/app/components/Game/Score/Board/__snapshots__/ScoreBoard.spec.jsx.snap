@@ -5,7 +5,7 @@ exports[`ScoreBoard should show user result report and a button to restart the g
   className="score-board"
 >
   <h2>
-    Score Board
+    Score Board 
   </h2>
   <h3>
     Hey! good match
@@ -13,25 +13,23 @@ exports[`ScoreBoard should show user result report and a button to restart the g
   <div
     className="user-report"
   >
-    Successful :
-     
+    Successful : 
     0
      
     <br />
-    Fails :
-     
+    Fails : 
     0
      
     <br />
-    Total Score :
-     
+    Total Score : 
     0
      
     <br />
     <button
       onClick={[MockFunction]}
+      type="submit"
     >
-      Try Again!
+      Try Again! 
     </button>
   </div>
 </div>
