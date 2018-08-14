@@ -67,6 +67,19 @@ describe('Timer', () => {
     });
   });
 
+  describe('nothing changes', () => {
+    beforeEach(() => {
+      wrapper.setProps({
+        elapsed: 28,
+      });
+      wrapper.update();
+    });
+
+    it('should not update component', () => {
+      expect(wrapper.find('.timer').text()).toEqual('28');
+    });
+  });
+
   describe('reset timer', () => {
     beforeEach(() => {
       wrapper.setProps({
